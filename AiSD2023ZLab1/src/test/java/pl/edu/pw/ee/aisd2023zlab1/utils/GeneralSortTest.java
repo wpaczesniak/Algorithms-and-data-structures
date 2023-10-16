@@ -58,6 +58,8 @@ public abstract class GeneralSortTest {
         assertThat(nums)
                 .isSorted()
                 .containsExactlyInAnyOrder(numsCopy);
+        
+//        sprawdzenie czy to co bylo tak jest bez strat 
     }
 
     private double[] createRandomData(int size) {
