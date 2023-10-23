@@ -34,6 +34,8 @@ public class QuickSortIterative implements Sorting {
                 n--;
                 left = starts.get(n);
                 right = ends.get(n);
+                starts.remove(n);
+                ends.remove(n);
                 pivot = splitData(data, left, right);
 
                 if (pivot - 1 > left) {
@@ -75,6 +77,8 @@ public class QuickSortIterative implements Sorting {
 
         return left;
     }
+
+
 
     private void swap(double[] data, int firstId, int secondId) {
         if (firstId != secondId) {
