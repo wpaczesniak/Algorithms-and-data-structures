@@ -7,7 +7,7 @@ public class AdvancedGetters {
 
     public static int getNumOfElems(HashTable<?> hash) {
         String fieldNumOfElems = "nElems";
-        
+
         try {
             Field field = hash.getClass().getSuperclass().getDeclaredField(fieldNumOfElems);
             field.setAccessible(true);
@@ -21,3 +21,4 @@ public class AdvancedGetters {
         }
     }
 }
+

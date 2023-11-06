@@ -1,38 +1,33 @@
 package pl.edu.pw.ee.aisd2023zlab3;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.catchThrowable;
 import org.junit.Test;
+
 import pl.edu.pw.ee.aisd2023zlab3.services.HashTable;
 import pl.edu.pw.ee.aisd2023zlab3.utils.AdvancedGetters;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static pl.edu.pw.ee.aisd2023zlab3.utils.AdvancedGetters.getNumOfElems;
 
-public class HashLinearProbingTest {
+public class HashDoubleHashingTest {
 
-    @Test
-    public void should_ThrowException_WhenInitialSizeIsLowerThanOne() {
+    @Test(expected = IllegalArgumentException.class)
+    public void should_ThrowException_When_InitailSizeIsEqualToThree() {
         // given
-        int initialSize = -1;
+        int initialSize = 1;
 
         // when
-        Throwable exceptionCaught = catchThrowable(() -> {
-            new HashLinearProbing<>(initialSize);
-        });
+        HashTable<Double> hash = new HashDoubleHashing<>(initialSize);
 
         // then
-        String message = "Initial size of hash table cannot be lower than 1!";
-
-        assertThat(exceptionCaught)
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(message);
+        assert false;
     }
+
     @Test
     public void should_CorrectlyAddNewElems_WhenNotExistInHashTable() {
         // given
-        HashTable<String> unusedNames = new HashLinearProbing<>();
+        HashTable<String> unusedNames = new HashDoubleHashing<>();
         String newEleme = "P. Czarnek";
 
         // when
@@ -44,14 +39,15 @@ public class HashLinearProbingTest {
         assertThat(nOfElemsBeforePut).isEqualTo(0);
         assertThat(nOfElemsAfterPut).isEqualTo(1);
     }
+
     @Test(expected = IllegalArgumentException.class)
     public void should_ThrowException_WhenAddingNullElement() {
         // given
-        HashTable<String> hashTable = new HashLinearProbing<>();
-        String element = null;
+        HashTable<String> hashTable = new HashDoubleHashing<>();
+
 
         // when
-        hashTable.put(element);
+        hashTable.put(null);
 
         // then
         assert false;
@@ -60,8 +56,8 @@ public class HashLinearProbingTest {
     @Test(expected = IllegalArgumentException.class)
     public void should_ThrowException_WhenTryGetNullElementFromTwentyElements() {
         // given
-        HashTable<Double> hashTable = new HashLinearProbing<>();
-        for(int i = 0; i < 20; i++)
+        HashTable<Double> hashTable = new HashDoubleHashing<>();
+        for (int i = 0; i < 20; i++)
             hashTable.put(i + 1.5);
         // when
 
@@ -70,10 +66,11 @@ public class HashLinearProbingTest {
         // then
         assert false;
     }
+
     @Test(expected = IllegalStateException.class)
     public void should_ThrowException_WhenTryGetOneElementFromEmptyHashTable() {
         // given
-        HashTable<String> hash = new HashLinearProbing<>();
+        HashTable<String> hash = new HashDoubleHashing<>();
         String element = "Wroclaw";
 
         // when
@@ -82,10 +79,11 @@ public class HashLinearProbingTest {
         // then
         assert false;
     }
+
     @Test(expected = IllegalArgumentException.class)
     public void should_ThrowException_WhenTryGetOneElementThatDontExistInHashTable() {
         // given
-        HashTable<String> hash = new HashLinearProbing<>();
+        HashTable<String> hash = new HashDoubleHashing<>();
         String elementInHash = "Monika";
         String elementTryToGet = "Wojtek";
         hash.put(elementInHash);
@@ -96,10 +94,11 @@ public class HashLinearProbingTest {
         // then
         assert false;
     }
+
     @Test(expected = IllegalStateException.class)
     public void should_ThrowException_WhenTryDeleteElementDontExist() {
         // given
-        HashTable<String> hash = new HashLinearProbing<>(3);
+        HashTable<String> hash = new HashDoubleHashing<>(3);
         String element = "Warszawa";
 
         // when
@@ -108,10 +107,11 @@ public class HashLinearProbingTest {
         // then
         assert false;
     }
+
     @Test(expected = IllegalArgumentException.class)
     public void should_ThrowException_WhenTryToDeleteOneElementThatDontExistInHashTable() {
         // given
-        HashTable<String> hash = new HashLinearProbing<>(3);
+        HashTable<String> hash = new HashDoubleHashing<>(3);
         String elementInHashTable = "Warszawa";
         String elementTryDelete = "Krakow";
         hash.put(elementInHashTable);
@@ -126,7 +126,7 @@ public class HashLinearProbingTest {
     @Test(expected = IllegalStateException.class)
     public void should_ThrowException_WhenTrySecondDeleteTheSameElement() {
         // given
-        HashTable<String> hash = new HashLinearProbing<>(3);
+        HashTable<String> hash = new HashDoubleHashing<>(3);
         String element = "Warszawa";
         hash.put(element);
 
@@ -137,10 +137,11 @@ public class HashLinearProbingTest {
         // then
         assert false;
     }
+
     @Test
     public void should_CorrectlyNumsOfNumber_WhenAddTwoElements() {
         // given
-        HashTable<String> hashTable = new HashLinearProbing<>(1);
+        HashTable<String> hashTable = new HashDoubleHashing<>(2);
         String firstElement = "Monika";
         String secondElement = "Wojtek";
 
@@ -157,10 +158,11 @@ public class HashLinearProbingTest {
         assertThat(numOfElemsAfterFirstAdd).isEqualTo(expectedAfterFirstAdd);
         assertThat(numOfElemsAfterSecondAdd).isEqualTo(expectedAfterSecondAdd);
     }
+
     @Test
     public void should_CorrectlyNumsOfNumber_WhenAddThreeElements() {
         // given
-        HashTable<String> hashTable = new HashLinearProbing<>(1);
+        HashTable<String> hashTable = new HashDoubleHashing<>(2);
         String firstElement = "Monika";
         String secondElement = "Wojtek";
         String thirdElement = "Andrzej";
@@ -181,13 +183,14 @@ public class HashLinearProbingTest {
         assertThat(numOfElemsAfterSecondAdd).isEqualTo(expectedAfterSecondAdd);
         assertThat(numOfElemsAfterThirdAdd).isEqualTo(expectedAfterThirdAdd);
     }
+
     @Test
     public void should_CorrectlyNumsOfNumber_WhenAddTwentyElements() {
         // given
-        HashTable<Double> hashTable = new HashLinearProbing<>(1);
+        HashTable<Double> hashTable = new HashDoubleHashing<>(2);
 
         // when
-        for(int i = 0; i < 20; i++)
+        for (int i = 0; i < 20; i++)
             hashTable.put(i + 1.5);
         int numOfElems = getNumOfElems(hashTable);
 
@@ -200,7 +203,7 @@ public class HashLinearProbingTest {
     @Test
     public void should_CorrectlyNumOfElems_WhenWantAddTheSameElement() {
         // given
-        HashTable<String> hashTable = new HashLinearProbing<>();
+        HashTable<String> hashTable = new HashDoubleHashing<>();
         String firstElement = "Krakow";
         String secondElement = "Krakow";
         String thirdElement = "Wroclaw";
@@ -219,7 +222,7 @@ public class HashLinearProbingTest {
     @Test
     public void should_CorrectlyGetElement_WhenOneElementExist() {
         // given
-        HashTable<String> hashTable = new HashLinearProbing<>();
+        HashTable<String> hashTable = new HashDoubleHashing<>();
         String element = "Warszawa";
         hashTable.put(element);
 
@@ -234,7 +237,7 @@ public class HashLinearProbingTest {
     @Test
     public void should_CorrectlyGetFirstElement_WhenTwoElementsExist() {
         // given
-        HashTable<String> hashTable = new HashLinearProbing<>();
+        HashTable<String> hashTable = new HashDoubleHashing<>();
         String firstElement = "Warszawa";
         String secondElement = "Krakow";
         hashTable.put(firstElement);
@@ -249,11 +252,10 @@ public class HashLinearProbingTest {
     }
 
 
-
     @Test
     public void should_CorrectlyGetSecondElement_WhenTwoElementsExist() {
         // given
-        HashTable<String> hashTable = new HashLinearProbing<>();
+        HashTable<String> hashTable = new HashDoubleHashing<>();
         String firstElement = "Warszawa";
         String secondElement = "Krakow";
         hashTable.put(firstElement);
@@ -271,8 +273,8 @@ public class HashLinearProbingTest {
     @Test
     public void should_CorrectlyGetFirstElement_WhenHaveThreeElements() {
         // given
-        HashTable<String> hashTable = new HashLinearProbing<>();
-        String[] elements = { "Wetlina", "Bukowiec","Bieszczady" };
+        HashTable<String> hashTable = new HashDoubleHashing<>();
+        String[] elements = {"Wetlina", "Bukowiec", "Bieszczady"};
         hashTable.put(elements[0]);
         hashTable.put(elements[1]);
         hashTable.put(elements[2]);
@@ -284,11 +286,12 @@ public class HashLinearProbingTest {
         String expected = elements[0];
         assertThat(result).isEqualTo(expected);
     }
+
     @Test
     public void should_CorrectlyGetMiddleElement_WhenHaveTreeElements() {
         // given
-        HashTable<String> hashTable = new HashLinearProbing<>();
-        String[] elements = { "Wetlina", "Bukowiec", "Bieszczady" };
+        HashTable<String> hashTable = new HashDoubleHashing<>();
+        String[] elements = {"Wetlina", "Bukowiec", "Bieszczady"};
         hashTable.put(elements[0]);
         hashTable.put(elements[1]);
         hashTable.put(elements[2]);
@@ -300,11 +303,12 @@ public class HashLinearProbingTest {
         String expected = elements[1];
         assertThat(result).isEqualTo(expected);
     }
+
     @Test
     public void should_CorrectlyGetLastElement_WhenHaveThreeElements() {
         // given
-        HashTable<String> hashTable = new HashLinearProbing<>();
-        String[] elements = { "Wetlina", "Bukowiec","Bieszczady" };
+        HashTable<String> hashTable = new HashDoubleHashing<>();
+        String[] elements = {"Wetlina", "Bukowiec", "Bieszczady"};
         hashTable.put(elements[0]);
         hashTable.put(elements[1]);
         hashTable.put(elements[2]);
@@ -320,26 +324,26 @@ public class HashLinearProbingTest {
     @Test
     public void should_CorrectlyGotElements_WhenSixElementsInHashTable() {
         // given
-        HashTable<Double> hashTable = new HashLinearProbing<>(1);
-        Double [] getElements = new Double[6];
-        Double [] elements = {3.6, 5.7, 8.9, 23.6, 54.1, 324.4};
+        HashTable<Double> hashTable = new HashDoubleHashing<>(2);
+        Double[] getElements = new Double[6];
+        Double[] elements = {3.6, 5.7, 8.9, 23.6, 54.1, 324.4};
 
-        for(int i = 0; i < 6; i++)
+        for (int i = 0; i < 6; i++)
             hashTable.put(elements[i]);
 
         // when
-        for(int i= 0; i < 6; i++){
+        for (int i = 0; i < 6; i++) {
             getElements[i] = hashTable.get(elements[i]);
         }
 
         // then
-        assertArrayEquals(elements,getElements);
+        assertArrayEquals(elements, getElements);
     }
 
     @Test
     public void should_CorrectlyNumberOfElements_WhenDeleteElementInHashTable() {
         // given
-        HashTable<String> hashTable = new HashLinearProbing<>(3);
+        HashTable<String> hashTable = new HashDoubleHashing<>(3);
         String element = "Warszawa";
         hashTable.put(element);
 
@@ -357,7 +361,7 @@ public class HashLinearProbingTest {
     @Test
     public void should_CorrectlyNumberOfElements_WhenOneElemWasDeleted() {
         // given
-        HashTable<String> hashTable = new HashLinearProbing<>(2);
+        HashTable<String> hashTable = new HashDoubleHashing<>(2);
         String elementToDelete = "Warszawa";
         String elementOneConst = "Krakow";
         String elementSecondConst = "Wroclaw";
@@ -378,7 +382,7 @@ public class HashLinearProbingTest {
     @Test
     public void should_CorrectlyAddAndDeleteAndAddTheSameElement_WhenExistOneElementInHashTable() {
         // given
-        HashTable<String> hashTable = new HashLinearProbing<>(3);
+        HashTable<String> hashTable = new HashDoubleHashing<>(3);
         String element = "Warszawa";
         hashTable.put(element);
 
@@ -398,7 +402,7 @@ public class HashLinearProbingTest {
     @Test
     public void should_CorrectlyNumbersOfElementsAfterDeleteFirstElement_WhenTwoElementExistInHashTable() {
         // given
-        HashTable<String> hashTable = new HashLinearProbing<>(3);
+        HashTable<String> hashTable = new HashDoubleHashing<>(3);
         String firstElement = "Warszawa";
         String secondElement = "Krakow";
         hashTable.put(firstElement);
@@ -413,10 +417,11 @@ public class HashLinearProbingTest {
         assertThat(beforeDeleteNumbersOfElements).isEqualTo(2);
         assertThat(afterDeleteNumbersOfElements).isEqualTo(1);
     }
+
     @Test
     public void should_CorrectlyNumbersOfElementsAfterDeleteSecondElement_WhenTwoElementExistInHashTable() {
         // given
-        HashTable<String> hashTable = new HashLinearProbing<>(3);
+        HashTable<String> hashTable = new HashDoubleHashing<>(3);
         String firstElement = "Warszawa";
         String secondElement = "Krakow";
         hashTable.put(firstElement);
@@ -431,11 +436,12 @@ public class HashLinearProbingTest {
         assertThat(beforeDeleteNumbersOfElements).isEqualTo(2);
         assertThat(afterDeleteNumbersOfElements).isEqualTo(1);
     }
+
     @Test
     public void should_CorrectlyNumbersOfElementsAfterDeleteFirstElement_WhenThreeElementExistInHashTable() {
         // given
-        HashTable<String> hashTable = new HashLinearProbing<>();
-        String[] elements = { "Wetlina", "Bukowiec","Bieszczady" };
+        HashTable<String> hashTable = new HashDoubleHashing<>();
+        String[] elements = {"Wetlina", "Bukowiec", "Bieszczady"};
         hashTable.put(elements[0]);
         hashTable.put(elements[1]);
         hashTable.put(elements[2]);
@@ -449,11 +455,12 @@ public class HashLinearProbingTest {
         assertThat(beforeDeleteNumbersOfElements).isEqualTo(3);
         assertThat(afterDeleteNumbersOfElements).isEqualTo(2);
     }
+
     @Test
     public void should_CorrectlyNumbersOfElementsAfterDeleteMiddleElement_WhenThreeElementExistInHashTable() {
         // given
-        HashTable<String> hashTable = new HashLinearProbing<>();
-        String[] elements = { "Wetlina", "Bukowiec","Bieszczady" };
+        HashTable<String> hashTable = new HashDoubleHashing<>();
+        String[] elements = {"Wetlina", "Bukowiec", "Bieszczady"};
         hashTable.put(elements[0]);
         hashTable.put(elements[1]);
         hashTable.put(elements[2]);
@@ -467,11 +474,12 @@ public class HashLinearProbingTest {
         assertThat(beforeDeleteNumbersOfElements).isEqualTo(3);
         assertThat(afterDeleteNumbersOfElements).isEqualTo(2);
     }
+
     @Test
     public void should_CorrectlyNumbersOfElementsAfterDeleteLastElement_WhenThreeElementExistInHashTable() {
         // given
-        HashTable<String> hashTable = new HashLinearProbing<>();
-        String[] elements = { "Wetlina", "Bukowiec","Bieszczady" };
+        HashTable<String> hashTable = new HashDoubleHashing<>();
+        String[] elements = {"Wetlina", "Bukowiec", "Bieszczady"};
         hashTable.put(elements[0]);
         hashTable.put(elements[1]);
         hashTable.put(elements[2]);
@@ -486,8 +494,4 @@ public class HashLinearProbingTest {
         assertThat(afterDeleteNumbersOfElements).isEqualTo(2);
     }
 
-
 }
-
-
-

@@ -5,6 +5,14 @@ import pl.edu.pw.ee.aisd2023zlab3.services.HashTable;
 
 public abstract class HashOpenAdressing<T extends Comparable<T>> implements HashTable<T> {
 
+    Comparable<T> beginRemoveValue = new Comparable<T>() {
+        @Override
+        public int compareTo(T o) {
+            return o == this ? 0 : -1;
+        }
+    };
+
+    private final T deleteValue = (T) beginRemoveValue;
     private final T nil = null;
     private int size;
     private int nElems;
@@ -32,7 +40,7 @@ public abstract class HashOpenAdressing<T extends Comparable<T>> implements Hash
         int i = 0;
         int hashId = hashFunc(key, i);
 
-        while (hashElems[hashId] != nil) {
+        while (hashElems[hashId] != nil && hashElems[hashId].compareTo(newElem) != 0 && deleteValue.compareTo(hashElems[hashId]) != 0) {
             if (i + 1 == size) {
                 doubleResize();
                 i = -1;
@@ -40,19 +48,66 @@ public abstract class HashOpenAdressing<T extends Comparable<T>> implements Hash
             i = (i + 1) % size;
             hashId = hashFunc(key, i);
         }
-
-        hashElems[hashId] = newElem;
-        nElems++;
+        if (hashElems[hashId] != nil && hashElems[hashId].compareTo(newElem) == 0) {
+            hashElems[hashId] = newElem;
+        } else {
+            hashElems[hashId] = newElem;
+            nElems++;
+        }
     }
+
 
     @Override
     public T get(T elem) {
-        throw new NotImplementedException("TODO: get(...)");
+        validateInputElem(elem);
+        validateNumOfElems();
+
+        int key = elem.hashCode();
+        int i = 0;
+        int hashId = hashFunc(key, i);
+
+        while (hashElems[hashId] != nil && hashElems[hashId].compareTo(elem) != 0) {
+            if (i + 1 == size) {
+                doubleResize();
+                i = -1;
+            }
+
+            i = (i + 1) % size;
+            hashId = hashFunc(key, i);
+
+        }
+
+        if (hashElems[hashId] == nil) {
+            throw new IllegalArgumentException("Element does not exist in the hash table!");
+        }
+
+        return hashElems[hashId];
     }
 
     @Override
     public void delete(T elem) {
-        throw new NotImplementedException("TODO: delete(...)");
+        validateInputElem(elem);
+        validateNumOfElems();
+
+        int key = elem.hashCode();
+        int i = 0;
+        int hashId = hashFunc(key, i);
+
+        while (hashElems[hashId] != nil && hashElems[hashId].compareTo(elem) != 0) {
+            if (i + 1 == size) {
+                throw new IllegalArgumentException("Elem does not exist in hash table!");
+            }
+
+            i = (i + 1) % size;
+            hashId = hashFunc(key, i);
+        }
+
+        if (hashElems[hashId] == nil) {
+            throw new IllegalArgumentException("Elem does not exist in hash table!");
+        }else{
+            hashElems[hashId] = (T) deleteValue;
+            nElems--;
+        }
     }
 
     private void validateHashInitSize(int initialSize) {
@@ -66,6 +121,13 @@ public abstract class HashOpenAdressing<T extends Comparable<T>> implements Hash
             throw new IllegalArgumentException("Input elem cannot be null!");
         }
     }
+
+    private void validateNumOfElems() {
+        if (nElems == 0) {
+            throw new IllegalStateException("Hash Table is empty!");
+        }
+    }
+
 
     abstract int hashFunc(int key, int i);
 

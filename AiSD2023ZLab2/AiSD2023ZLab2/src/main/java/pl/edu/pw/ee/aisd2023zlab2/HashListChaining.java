@@ -12,6 +12,7 @@ public abstract class HashListChaining<T extends Comparable<T>> implements HashT
     private int nElem;
     final int size;
 
+
     private class Elem<T extends Comparable<T>> {
 
         private T value;
