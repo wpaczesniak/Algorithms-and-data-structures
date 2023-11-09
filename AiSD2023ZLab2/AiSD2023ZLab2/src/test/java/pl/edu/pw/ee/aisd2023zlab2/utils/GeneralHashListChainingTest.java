@@ -25,6 +25,9 @@ public abstract class GeneralHashListChainingTest {
         this.hashListClass = hashListClass;
     }
 
+
+
+
     @Before
     public void setup() {
         hashString = createHashInstance(hashListClass);
