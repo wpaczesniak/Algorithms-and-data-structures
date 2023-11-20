@@ -1,3 +1,5 @@
 pl\edu\pw\ee\aisd2023zlab4\performance\RbtMapPerformanceTest.class
-pl\edu\pw\ee\aisd2023zlab4\RbtMapTest.class
+pl\edu\pw\ee\aisd2023zlab4\performance\RbtMapPerformanceDESCTest.class
 pl\edu\pw\ee\aisd2023zlab4\RedBlackTreeTest.class
+pl\edu\pw\ee\aisd2023zlab4\performance\RbtMapPerformanceASCTest.class
+pl\edu\pw\ee\aisd2023zlab4\RbtMapTest.class

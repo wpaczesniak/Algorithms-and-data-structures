@@ -6,6 +6,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import static java.lang.String.format;
 import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.UUID;
 import java.util.logging.Logger;
 import org.junit.Before;
@@ -13,10 +16,11 @@ import org.junit.Test;
 import pl.edu.pw.ee.aisd2023zlab4.RbtMap;
 import pl.edu.pw.ee.aisd2023zlab4.services.MapInterface;
 
-public class RbtMapPerformanceTestASC {
 
-    private static final Logger LOG = Logger.getLogger(RbtMapPerformanceTestASC.class.getName());
-    private final String filename = "rbtPerformanceResults.txt";
+public class RbtMapPerformanceDESCTest {
+
+    private static final Logger LOG = Logger.getLogger(RbtMapPerformanceDESCTest.class.getName());
+    private final String filename = "rbtPerformanceDESCResults.txt";
 
     @Before
     public void setup() {
@@ -49,12 +53,22 @@ public class RbtMapPerformanceTestASC {
     }
 
     private void putRandomData(MapInterface<String, String> map, int nOfData) {
-        String keyAndValue;
+        String randomNumber;
+        List<String> sortedKeys = new ArrayList<>();
 
         for (int i = 0; i < nOfData; i++) {
-            keyAndValue = UUID.randomUUID().toString();
+            randomNumber = UUID.randomUUID().toString();
+            sortedKeys.add(randomNumber);
+        }
+
+
+        Collections.reverse(sortedKeys);
+
+        for (String keyAndValue : sortedKeys) {
             map.setValue(keyAndValue, keyAndValue);
         }
+
+
     }
 
     private void saveResult(int currentSize, int nOfPuts) {
@@ -94,3 +108,6 @@ public class RbtMapPerformanceTestASC {
     }
 
 }
+
+
+

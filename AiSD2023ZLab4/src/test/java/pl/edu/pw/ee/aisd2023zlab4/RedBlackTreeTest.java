@@ -11,7 +11,6 @@ import static org.junit.jupiter.api.Assertions.*;
 public class RedBlackTreeTest {
     private RedBlackTree<Character, Character> redBlackTree;
 
-    private RedBlackTree<String, String> rbt;
     private RedBlackTree<Character, Character> map;
     private RedBlackTree<Integer, Integer> map2;
     private RedBlackTree<Character, Integer> map3;
@@ -22,7 +21,6 @@ public class RedBlackTreeTest {
         map = new RedBlackTree<>();
         map2 = new RedBlackTree<>();
         map3 = new RedBlackTree<>();
-        rbt = new RedBlackTree<>();
     }
     @Test(expected = IllegalArgumentException.class)
     public void should_ThrowException_WhenTrySetNullKeyForCharacterKeysAndValue() {
@@ -1281,19 +1279,18 @@ public class RedBlackTreeTest {
 
 
     @Test
-    public void should_CorrectlyDeleteMaxNode_WhenPresentInTree() {
+    public void should_CorrectlyDeleteNodeMax_WhenForTheLettersOfTheLatinAlphabet() {
         // given
-        RedBlackTree<Character, Integer> tree = new RedBlackTree<>();
-        Character[] letters
+        Character[] alphabet
                 = {'A', 'B', 'C', 'D', 'E', 'F', 'G',
                 'H', 'I', 'J', 'K', 'L', 'M', 'N'};
-        for (int i = 0; i < letters.length; i++) {
-            tree.put(letters[i], i);
+        for (int i = 0; i < alphabet.length; i++) {
+            map3.put(alphabet[i], i);
         }
 
         // when
-        tree.deleteMax();
-        Integer actual = tree.get('O');
+        map3.deleteMax();
+        Integer actual = map3.get('Z');
 
         // then
         Integer expected = null;

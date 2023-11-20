@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="pl.edu.pw.ee.aisd2023zlab4.RbtMapTest" time="6.25" tests="41" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="pl.edu.pw.ee.aisd2023zlab4.performance.RbtMapPerformanceASCTest" time="12.651" tests="1" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="19"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -59,45 +59,5 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="63.0"/>
   </properties>
-  <testcase name="should_CorrectlyReturnArrayOfValues_WhenKeysAreInTheIntegerMapCaseSecond" classname="pl.edu.pw.ee.aisd2023zlab4.RbtMapTest" time="0.145"/>
-  <testcase name="should_ThrowException_WhenTrySetNullKeyForIntegerKeysAndValues" classname="pl.edu.pw.ee.aisd2023zlab4.RbtMapTest" time="0.002"/>
-  <testcase name="should_CorrectlyReturnValue_WhenMapHasThreeNodesForIntegerKeysAndValues" classname="pl.edu.pw.ee.aisd2023zlab4.RbtMapTest" time="0.008"/>
-  <testcase name="should_ThrowException_WhenTrySetNullValueForCharacterKeysAndIntegerValues" classname="pl.edu.pw.ee.aisd2023zlab4.RbtMapTest" time="0"/>
-  <testcase name="should_CorrectlyReturnNull_WhenGetValueButKeyDoestExistInMapForCharacterKeysAndIntegerValues" classname="pl.edu.pw.ee.aisd2023zlab4.RbtMapTest" time="0.018"/>
-  <testcase name="should_CorrectlyReturnArrayOfValues_WhenKeysAndValueAreInTheMapCaseFirst" classname="pl.edu.pw.ee.aisd2023zlab4.RbtMapTest" time="0"/>
-  <testcase name="should_ThrowException_WhenTrySetNullKeyForCharacterKeysAndIntegerValues" classname="pl.edu.pw.ee.aisd2023zlab4.RbtMapTest" time="0"/>
-  <testcase name="should_ThrowException_WhenTryGetNullKeyForIntegerKeysAndValues" classname="pl.edu.pw.ee.aisd2023zlab4.RbtMapTest" time="0.001"/>
-  <testcase name="should_CorrectlyReturnValue_WhenMapHasTheSameNodeForIntegerKeysAndValues" classname="pl.edu.pw.ee.aisd2023zlab4.RbtMapTest" time="0"/>
-  <testcase name="should_CorrectlyReturnValues_WhenKeysAreArrayASCII" classname="pl.edu.pw.ee.aisd2023zlab4.RbtMapTest" time="0.002"/>
-  <testcase name="should_CorrectlyReturnValues_WhenKeysAreLatinAlphabet" classname="pl.edu.pw.ee.aisd2023zlab4.RbtMapTest" time="0.001"/>
-  <testcase name="should_CorrectlyReturnNull_WhenWantToGetValueButKeyDoestExistInMapForCharacterKeysAndValue" classname="pl.edu.pw.ee.aisd2023zlab4.RbtMapTest" time="0.001"/>
-  <testcase name="should_CorrectlyReturnUpdateValue_WhenInIntegerMapTheKeyExistForIntegerKeysAndValues" classname="pl.edu.pw.ee.aisd2023zlab4.RbtMapTest" time="0.001"/>
-  <testcase name="should_CorrectlyReturnValue_WhenMapHasOneNodeForCharacterKeysAndValue" classname="pl.edu.pw.ee.aisd2023zlab4.RbtMapTest" time="0"/>
-  <testcase name="should_CorrectlyReturnValue_WhenMapHasTwoTheSameNodesForCharacterKeysAndValue" classname="pl.edu.pw.ee.aisd2023zlab4.RbtMapTest" time="0.001"/>
-  <testcase name="should_CorrectlyReturnUpdateValue_WhenTheKeyExistsForCharacterKeysAndValue" classname="pl.edu.pw.ee.aisd2023zlab4.RbtMapTest" time="0"/>
-  <testcase name="should_CorrectlyReturnValue_WhenMapHasOneNodesForCharacterKeysAndIntegerValues" classname="pl.edu.pw.ee.aisd2023zlab4.RbtMapTest" time="0"/>
-  <testcase name="should_ThrowException_WhenTrySetNullKeyForCharacterKeysAndValue" classname="pl.edu.pw.ee.aisd2023zlab4.RbtMapTest" time="0.001"/>
-  <testcase name="should_ThrowException_WhenTrySetNullValueForIntegerKeysAndValues" classname="pl.edu.pw.ee.aisd2023zlab4.RbtMapTest" time="0.001"/>
-  <testcase name="should_CorrectlyReturnNull_WhenMapIsEmptyForIntegerKeysAndValues" classname="pl.edu.pw.ee.aisd2023zlab4.RbtMapTest" time="0"/>
-  <testcase name="should_CorrectlyReturnValues_WhenKeysAndValueAreInTheMapCaseThird" classname="pl.edu.pw.ee.aisd2023zlab4.RbtMapTest" time="0"/>
-  <testcase name="should_CorrectlyReturnUpdateValue_WhenTheKeyExistsForCharacterKeysAndIntegerValues" classname="pl.edu.pw.ee.aisd2023zlab4.RbtMapTest" time="0.001"/>
-  <testcase name="should_CorrectlyReturnNull_WhenCharacterIntegerMapIsEmptyForCharacterKeysAndIntegerValues" classname="pl.edu.pw.ee.aisd2023zlab4.RbtMapTest" time="0"/>
-  <testcase name="should_CorrectlyReturnValue_WhenRBTHasTwoNodesForCharacterKeysAndIntegerValues" classname="pl.edu.pw.ee.aisd2023zlab4.RbtMapTest" time="0.001"/>
-  <testcase name="should_ThrowException_WhenTryGetNullKeyForCharacterKeysAndValue" classname="pl.edu.pw.ee.aisd2023zlab4.RbtMapTest" time="0"/>
-  <testcase name="should_CorrectlyReturnNull_WhenGetValueButKeyDoestExistInMapForIntegerKeysAndValues" classname="pl.edu.pw.ee.aisd2023zlab4.RbtMapTest" time="0"/>
-  <testcase name="should_CorrectlyReturnValue_WhenMapHasTwoNodesForCharacterKeysAndValue" classname="pl.edu.pw.ee.aisd2023zlab4.RbtMapTest" time="0.002"/>
-  <testcase name="should_CorrectlyReturnValue_WhenMapHasTwoTheSameNodesForCharacterKeysAndIntegerValues" classname="pl.edu.pw.ee.aisd2023zlab4.RbtMapTest" time="0.001"/>
-  <testcase name="should_CorrectlyReturnNull_WhenMapIsEmptyForCharacterKeysAndValue" classname="pl.edu.pw.ee.aisd2023zlab4.RbtMapTest" time="0"/>
-  <testcase name="should_CorrectlyReturnValue_WhenMapHasOneNodeForIntegerKeysAndValues" classname="pl.edu.pw.ee.aisd2023zlab4.RbtMapTest" time="0"/>
-  <testcase name="should_ThrowException_WhenTrySetNullValueForCharacterKeysAndValue" classname="pl.edu.pw.ee.aisd2023zlab4.RbtMapTest" time="0.001"/>
-  <testcase name="should_ThrowException_WhenTrySetNullKeyAndValueForCharacterKeysAndIntegerValues" classname="pl.edu.pw.ee.aisd2023zlab4.RbtMapTest" time="0.001"/>
-  <testcase name="should_CorrectlyReturnValue_WhenMapHasThreeNodesForCharacterKeysAndValue" classname="pl.edu.pw.ee.aisd2023zlab4.RbtMapTest" time="0"/>
-  <testcase name="should_ThrowException_WhenTryGetNullKeyForCharacterKeysAndIntegerValues" classname="pl.edu.pw.ee.aisd2023zlab4.RbtMapTest" time="0.001"/>
-  <testcase name="should_GetValues_WhenDataIsRandom" classname="pl.edu.pw.ee.aisd2023zlab4.RbtMapTest" time="6.051"/>
-  <testcase name="should_CorrectlyReturnArrayOfValues_WhenKeysAndValueAreInTheMapCaseSecond" classname="pl.edu.pw.ee.aisd2023zlab4.RbtMapTest" time="0.001"/>
-  <testcase name="should_CorrectlyReturnValue_WhenMapHasTwoNodesForIntegerKeysAndValues" classname="pl.edu.pw.ee.aisd2023zlab4.RbtMapTest" time="0"/>
-  <testcase name="should_CorrectlyReturnArrayOfValues_WhenKeysAreInTheIntegerMapCaseFirst" classname="pl.edu.pw.ee.aisd2023zlab4.RbtMapTest" time="0"/>
-  <testcase name="should_ThrowException_WhenTrySetNullKeyAndValueForIntegerKeysAndValues" classname="pl.edu.pw.ee.aisd2023zlab4.RbtMapTest" time="0"/>
-  <testcase name="should_ThrowException_WhenTrySetNullKeyAndValueForCharacterKeysAndValue" classname="pl.edu.pw.ee.aisd2023zlab4.RbtMapTest" time="0.001"/>
-  <testcase name="should_CorrectlyReturnValue_WhenMapHasTwoNodesForCharacterKeysAndIntegerValues" classname="pl.edu.pw.ee.aisd2023zlab4.RbtMapTest" time="0"/>
+  <testcase name="countTreeHeightDependingOnDataSize" classname="pl.edu.pw.ee.aisd2023zlab4.performance.RbtMapPerformanceASCTest" time="12.645"/>
 </testsuite>
