@@ -8,4 +8,6 @@ The given algorithms concerned issues such as:
 * Longest common subsequence,
 * Minimum spanning tree,
 * Graph algorithms (DFS, BFS, Dijkstra, Bellman-Ford).
+
+
 The Java programming language was used for all topics.
